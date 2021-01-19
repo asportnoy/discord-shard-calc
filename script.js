@@ -1,5 +1,5 @@
 function getShardNo(guild, shards) {
-	return (parseInt(guild) / Math.pow(2, 22)) % parseInt(shards)
+	return Math.floor(parseInt(guild) / Math.pow(2, 22)) % parseInt(shards)
 }
 
 let guildEl = document.getElementById('guild');
