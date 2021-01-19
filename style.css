@@ -1,0 +1,33 @@
+.error {
+    color: red;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    box-shadow: none;
+}
+
+input[type=text] {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 5px;
+    font-size: 18px;
+    width: 225px;
+}
+
+input[type=text]::placeholder {
+    color: white;
+}
+
+body {
+    background-color: #2C2F33;
+}
+
+#output {
+    font-size: 24px;
+    margin: 25px 0px 0px 5px;
+    display: inline-block;
+}
