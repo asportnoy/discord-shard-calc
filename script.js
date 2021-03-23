@@ -1,5 +1,9 @@
 function getShardNo(guild, shards) {
-	return Math.floor(parseInt(guild) / Math.pow(2, 22)) % parseInt(shards)
+    try {
+        return Number((BigInt(guild) >> 22n) % BigInt(shards))
+    } catch (e) {
+        return null;
+    }
 }
 
 let guildEl = document.getElementById('guild');
@@ -18,14 +22,19 @@ shardEl.addEventListener('input', update)
 function update() {
     let guild = guildEl.value;
     let shards = shardEl.value;
+    if (guild == '' || shards == '') {
+        outputEl.setAttribute('class', 'error');
+        outputEl.innerHTML = 'Missing fields.';
+        return;
+    }
     let shardNo = getShardNo(guild, shards);
-    if (shardNo % 1 !== 0) {
+    if (shardNo == null) {
         outputEl.setAttribute('class', 'error');
         outputEl.innerHTML = 'Invalid input.';
         return;
     }
-    outputEl.setAttribute('class', '');
+    outputEl.removeAttribute('class');
     outputEl.innerHTML = `Server ${guild} is in shard #${shardNo}.`
 }
 
-if (guildEl.value !== '' && shardEl.value !== '') update();
+update();
