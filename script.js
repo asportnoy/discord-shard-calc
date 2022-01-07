@@ -34,7 +34,7 @@ function update() {
         return;
     }
     outputEl.removeAttribute('class');
-    outputEl.innerHTML = `Server ${guild} is in shard #${shardNo}.`
+    outputEl.innerHTML = `Server ${guild} is on shard #${shardNo}.`
 }
 
 update();
